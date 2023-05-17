@@ -1,0 +1,24 @@
+type Gql {
+  # Example field (placeholder)
+  name: String
+  price: Int
+}
+
+input CreateGqlInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateGqlInput {
+  id: Int!
+}
+
+type Query {
+  gql: [Gql]!
+}
+
+type Mutation {
+  createGql(createGqlInput: CreateGqlInput!): Gql!
+  updateGql(updateGqlInput: UpdateGqlInput!): Gql!
+  removeGql(id: Int!): Gql
+}
