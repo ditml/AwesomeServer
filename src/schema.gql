@@ -2,39 +2,41 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Blog {
-  _id: String!
-
-  """Blog Description"""
+input ItemInput {
   description: String!
-
-  """Blog Title"""
+  price: Int!
   title: String!
 }
 
-input CreateBlogInput {
-  """Blog Description"""
+type ItemType {
   description: String!
-
-  """Blog Title"""
+  id: ID!
+  price: Int!
   title: String!
 }
 
 type Mutation {
-  createBlog(createBlogInput: CreateBlogInput!): Blog!
-  updateBlog(updateBlogInput: UpdateBlogInput!): Blog!
+  createItem(input: ItemInput!): ItemType!
+  createUser(input: UserInput!): UserType!
+  deleteItem(id: String!): ItemType!
+  deleteUser(id: String!): UserType!
+  updateItem(id: String!, input: ItemInput!): ItemType!
+  updateUser(id: String!, input: UserInput!): UserType!
 }
 
 type Query {
-  blog(_id: String!): Blog!
+  hello: String!
+  items: [ItemType!]!
+  users: [UserType!]!
 }
 
-input UpdateBlogInput {
-  _id: String!
+input UserInput {
+  name: String!
+  phone: Int!
+}
 
-  """Blog Description"""
-  description: String
-
-  """Blog Title"""
-  title: String
+type UserType {
+  id: ID!
+  name: String!
+  phone: Int!
 }
