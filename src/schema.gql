@@ -2,41 +2,68 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input ItemInput {
-  description: String!
-  price: Int!
-  title: String!
+input ChatInput {
+  chat_id: Int!
+  members: [Int!]!
+  messages: [String!]
+  title: String
 }
 
-type ItemType {
-  description: String!
+type ChatType {
+  chat_id: Int!
   id: ID!
-  price: Int!
-  title: String!
+  members: [Int!]!
+  messages: [String!]
+  title: String
+}
+
+input MsgInput {
+  body: String!
+  from_id: Int!
+  msg_id: Int!
+  msg_type: String!
+  to_id: Int!
+}
+
+type MsgType {
+  body: String!
+  from_id: Int!
+  id: ID!
+  msg_id: Int!
+  msg_type: String!
+  to_id: Int!
 }
 
 type Mutation {
-  createItem(input: ItemInput!): ItemType!
+  createChat(input: ChatInput!): ChatType!
+  createMsg(input: MsgInput!): MsgType!
   createUser(input: UserInput!): UserType!
-  deleteItem(id: String!): ItemType!
+  deleteChat(id: String!): ChatType!
+  deleteMsg(id: String!): MsgType!
   deleteUser(id: String!): UserType!
-  updateItem(id: String!, input: ItemInput!): ItemType!
+  updateChat(id: String!, input: ChatInput!): ChatType!
+  updateMsg(id: String!, input: MsgInput!): MsgType!
   updateUser(id: String!, input: UserInput!): UserType!
 }
 
 type Query {
+  chats: [ChatType!]!
   hello: String!
-  items: [ItemType!]!
+  messages: [MsgType!]!
   users: [UserType!]!
 }
 
 input UserInput {
-  name: String!
-  phone: Int!
+  email: String!
+  mobile: Int!
+  user_id: Int!
+  user_name: String!
 }
 
 type UserType {
+  email: String!
   id: ID!
-  name: String!
-  phone: Int!
+  mobile: Int!
+  user_id: Int!
+  user_name: String!
 }

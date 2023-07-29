@@ -5,14 +5,18 @@ export class UserType {
   @Field(() => ID)
   @IsString()
   readonly id?: string;
+
+  @Field(() => Int)
+  @IsNumber()
+  readonly user_id: number;
   @Field()
   @IsString()
   @IsNotEmpty()
-  readonly name: string;
+  readonly user_name: string;
   @Field(() => Int)
   @IsNumber()
-  readonly phone: number;
-  //   @Field()
-  //   @IsString()
-  //   readonly description: string;
+  readonly mobile: number;
+  @Field()
+  @IsString()
+  readonly email: string;
 }
